@@ -13,7 +13,7 @@ Wichtig:
   Tätigkeiten, Ergebnisse).
 ========================================================================== -->
 
-# Wissensdatei: Max Mustermann
+# Wissensdatei: Christian Wulff
 
 ## Kurzprofil
 
