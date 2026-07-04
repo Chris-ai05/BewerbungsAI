@@ -1,0 +1,650 @@
+/* ============================================================================
+   Gestaltung der Bewerbungs-Website
+   Schrift:  Spectral (Überschriften) · IBM Plex Sans (Text) · IBM Plex Mono (Labels)
+   Farben:   Papierweiß, Tinte, Karmin (Anlehnung an juristische Standardwerke)
+   ========================================================================== */
+
+:root {
+  --papier: #faf9f5;
+  --flaeche: #ffffff;
+  --tinte: #1a1d23;
+  --grau: #5d636e;
+  --karmin: #8a1f2b;
+  --karmin-dunkel: #6e1620;
+  --karmin-hauch: #f7ecec;
+  --linie: #e6e2d8;
+  --gruen: #4c7a57;
+
+  --schrift-text: "IBM Plex Sans", system-ui, sans-serif;
+  --schrift-display: "Spectral", Georgia, serif;
+  --schrift-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --spalte: min(100% - 3rem, 53rem);
+}
+
+/* ------------------------------- Basis ---------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--tinte);
+  font-family: var(--schrift-text);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--schrift-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--karmin);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--karmin);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 20;
+  background: var(--tinte);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 8px 8px;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* --------------------------- Wiederkehrendes ----------------------------- */
+
+.eyebrow {
+  font-family: var(--schrift-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--karmin);
+  margin: 0 0 0.9rem;
+}
+
+.knopf {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.3rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.knopf.primaer {
+  background: var(--karmin);
+  color: #fff;
+}
+
+.knopf.primaer:hover {
+  background: var(--karmin-dunkel);
+}
+
+.knopf.sekundaer {
+  color: var(--tinte);
+  border: 1px solid rgba(26, 29, 35, 0.28);
+}
+
+.knopf.sekundaer:hover {
+  color: var(--karmin);
+  border-color: var(--karmin);
+}
+
+/* ------------------------------ Kopfzeile -------------------------------- */
+
+.kopfzeile {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(250, 249, 245, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--linie);
+}
+
+.kopfzeile-innen {
+  width: var(--spalte);
+  margin: 0 auto;
+  padding: 0.9rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.wortmarke {
+  font-family: var(--schrift-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--tinte);
+  text-decoration: none;
+}
+
+.kopfzeile nav {
+  display: flex;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+}
+
+.kopfzeile nav a {
+  color: var(--grau);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.kopfzeile nav a:hover {
+  color: var(--karmin);
+}
+
+/* -------------------------------- Hero ----------------------------------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-innen {
+  width: var(--spalte);
+  margin: 0 auto;
+  padding: 6.5rem 0 5.5rem;
+  position: relative;
+}
+
+.hero-zeichen {
+  position: absolute;
+  right: -4rem;
+  top: -6rem;
+  font-family: var(--schrift-display);
+  font-size: clamp(18rem, 34vw, 30rem);
+  line-height: 1;
+  color: rgba(138, 31, 43, 0.055);
+  user-select: none;
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-size: clamp(2.7rem, 7vw, 4.3rem);
+  margin-bottom: 0.5rem;
+}
+
+.hero-untertitel {
+  font-family: var(--schrift-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--grau);
+  margin-bottom: 1.5rem;
+}
+
+.hero-text {
+  max-width: 36rem;
+  color: var(--grau);
+  margin-bottom: 2rem;
+}
+
+.hero-aktionen {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-innen > * {
+    animation: einblenden 0.6s ease both;
+  }
+
+  .hero-innen > *:nth-child(2) { animation-delay: 0.07s; }
+  .hero-innen > *:nth-child(3) { animation-delay: 0.14s; }
+  .hero-innen > *:nth-child(4) { animation-delay: 0.21s; }
+  .hero-innen > *:nth-child(5) { animation-delay: 0.28s; }
+}
+
+@keyframes einblenden {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ----------------------------- Abschnitte -------------------------------- */
+
+.abschnitt {
+  width: var(--spalte);
+  margin: 0 auto;
+  padding: 4.5rem 0;
+  border-top: 1px solid var(--linie);
+}
+
+.abschnitt h2 {
+  font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+}
+
+.abschnitt-einleitung {
+  color: var(--grau);
+  max-width: 38rem;
+  margin-bottom: 2rem;
+}
+
+/* Kompetenz-Schlagworte */
+
+.kompetenzen {
+  list-style: none;
+  padding: 0;
+  margin: 1.8rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.kompetenzen li {
+  background: var(--flaeche);
+  border: 1px solid var(--linie);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.87rem;
+  color: var(--tinte);
+}
+
+/* Werdegang */
+
+.stationen {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+}
+
+.stationen li {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1.5rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--linie);
+}
+
+.stationen li:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.station-zeit {
+  font-family: var(--schrift-mono);
+  font-size: 0.85rem;
+  color: var(--grau);
+  padding-top: 0.35rem;
+}
+
+.station-inhalt h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.15rem;
+}
+
+.station-ort {
+  color: var(--grau);
+  font-size: 0.92rem;
+  margin-bottom: 0.35rem;
+}
+
+.station-inhalt p:last-child {
+  margin-bottom: 0;
+}
+
+/* ------------------------------ Chat-Karte ------------------------------- */
+
+.chat-karte {
+  background: var(--flaeche);
+  border: 1px solid var(--linie);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(26, 29, 35, 0.04), 0 18px 40px -28px rgba(26, 29, 35, 0.25);
+  overflow: hidden;
+}
+
+.chat-kopf {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.25rem;
+  border-bottom: 1px solid var(--linie);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.status-punkt {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gruen);
+  flex-shrink: 0;
+}
+
+.chat-kopf-hinweis {
+  margin-left: auto;
+  color: var(--grau);
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.chat-verlauf {
+  height: 22rem;
+  overflow-y: auto;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background: #fdfcf9;
+}
+
+.nachricht {
+  max-width: 85%;
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  font-size: 0.95rem;
+}
+
+.nachricht.assistent {
+  align-self: flex-start;
+  background: var(--papier);
+  border: 1px solid var(--linie);
+  border-bottom-left-radius: 4px;
+}
+
+.nachricht.nutzer {
+  align-self: flex-end;
+  background: var(--karmin);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.nachricht.fehler {
+  align-self: flex-start;
+  background: var(--karmin-hauch);
+  border: 1px solid #e3c2c6;
+  color: #6e1620;
+  border-bottom-left-radius: 4px;
+}
+
+/* Tipp-Indikator (drei Punkte) */
+
+.tippt {
+  align-self: flex-start;
+  display: flex;
+  gap: 5px;
+  padding: 0.9rem 1rem;
+  background: var(--papier);
+  border: 1px solid var(--linie);
+  border-radius: 12px;
+  border-bottom-left-radius: 4px;
+}
+
+.tippt span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--grau);
+  animation: pulsieren 1.2s infinite ease-in-out;
+}
+
+.tippt span:nth-child(2) { animation-delay: 0.18s; }
+.tippt span:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes pulsieren {
+  0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tippt span {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
+/* Vorgeschlagene Fragen */
+
+.chat-vorschlaege {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.9rem 1.25rem;
+  border-top: 1px solid var(--linie);
+}
+
+.chat-vorschlaege button {
+  font-family: inherit;
+  font-size: 0.84rem;
+  color: var(--tinte);
+  background: var(--flaeche);
+  border: 1px solid var(--linie);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.chat-vorschlaege button:hover {
+  border-color: var(--karmin);
+  color: var(--karmin);
+}
+
+/* Eingabezeile */
+
+.chat-eingabe {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  border-top: 1px solid var(--linie);
+  padding: 0.55rem 0.55rem 0.55rem 1.1rem;
+}
+
+.chat-eingabe textarea {
+  flex: 1;
+  border: none;
+  background: transparent;
+  resize: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--tinte);
+  padding: 0.55rem 0;
+  max-height: 8rem;
+}
+
+.chat-eingabe textarea:focus {
+  outline: none;
+}
+
+.chat-eingabe button {
+  width: 2.6rem;
+  height: 2.6rem;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 9px;
+  background: var(--karmin);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.chat-eingabe button:hover:enabled {
+  background: var(--karmin-dunkel);
+}
+
+.chat-eingabe button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.chat-hinweis {
+  font-size: 0.8rem;
+  color: var(--grau);
+  margin-top: 0.9rem;
+}
+
+/* ------------------------------- Kontakt --------------------------------- */
+
+.kontakt-aktionen {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+/* ------------------------------ Fußzeile --------------------------------- */
+
+.fusszeile {
+  border-top: 1px solid var(--linie);
+  margin-top: 2rem;
+}
+
+.fusszeile-innen {
+  width: var(--spalte);
+  margin: 0 auto;
+  padding: 1.6rem 0 2.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--grau);
+}
+
+.fusszeile nav {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.fusszeile a {
+  color: var(--grau);
+}
+
+.fusszeile a:hover {
+  color: var(--karmin);
+}
+
+/* ----------------------- Rechtliches (Unterseiten) ------------------------ */
+
+.rechtstext {
+  width: var(--spalte);
+  margin: 0 auto;
+  padding: 4rem 0 5rem;
+  max-width: 44rem;
+}
+
+.rechtstext h1 {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+.rechtstext h2 {
+  font-size: 1.3rem;
+  margin-top: 2.2rem;
+}
+
+.zurueck {
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  font-size: 0.9rem;
+}
+
+.platzhalter-kasten {
+  background: var(--karmin-hauch);
+  border: 1px solid #e3c2c6;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  color: #6e1620;
+  margin-bottom: 2rem;
+}
+
+/* ------------------------------- Mobil ----------------------------------- */
+
+@media (max-width: 640px) {
+  .hero-innen {
+    padding: 4.5rem 0 4rem;
+  }
+
+  .hero-zeichen {
+    right: -6rem;
+    top: -4rem;
+  }
+
+  .abschnitt {
+    padding: 3.2rem 0;
+  }
+
+  .stationen li {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .station-zeit {
+    padding-top: 0;
+  }
+
+  .chat-kopf-hinweis {
+    display: none;
+  }
+
+  .chat-verlauf {
+    height: 19rem;
+  }
+
+  .nachricht {
+    max-width: 92%;
+  }
+}

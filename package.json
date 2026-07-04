@@ -1,0 +1,10 @@
+{
+  "name": "bewerbungs-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Persönliche Bewerbungs-Website mit KI-Assistent (Anthropic API, Vercel)",
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.110.0"
+  }
+}
